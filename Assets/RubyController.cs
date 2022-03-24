@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
+    [SerializeField] Transform hand;   
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,18 @@ public class RubyController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        MovementInput();
+        RotateHand();
+    }
+
+    void RotateHand()
+    {
+        float angle = Utility.AngleTowardsMouse(hand.position);
+        hand.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+    }
+
+    void MovementInput() 
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
