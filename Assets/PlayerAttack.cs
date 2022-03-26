@@ -86,6 +86,9 @@ public class PlayerAttack : MonoBehaviour
         {
             CanFire = true;
         }
-
+        else if (other.gameObject.tag == "Monstro")
+        {
+            Destroy(gameObject);
+        }
     }
 }
