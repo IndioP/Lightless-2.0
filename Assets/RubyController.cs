@@ -32,8 +32,8 @@ public class RubyController : MonoBehaviour
 
         //Debug.Log(horizontal, vertical);
         Vector2 position = transform.position;
-        position.x = position.x + 0.8f * horizontal * Time.deltaTime;
-        position.y = position.y + 0.8f * vertical * Time.deltaTime;
+        position.x = position.x + 1f * horizontal * Time.deltaTime;
+        position.y = position.y + 1f * vertical * Time.deltaTime;
         transform.position = position;
     }
 }
