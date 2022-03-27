@@ -11,6 +11,7 @@ public class Arrow : MonoBehaviour
     {
         //Destroy(gameObject, 4f);
         gameObject.tag = "Flecha";
+        ArrowVelocity = 2f;
     }
 
     private void FixedUpdate()
