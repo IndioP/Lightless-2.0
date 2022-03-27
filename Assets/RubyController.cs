@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class RubyController : MonoBehaviour
 {
-    [SerializeField] Transform hand;   
+    [SerializeField] Transform hand;
+    PhotonView view;
     // Start is called before the first frame update
     void Start()
     {
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;
+        view = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovementInput();
-        RotateHand();
+        if (view.IsMine)
+        {
+            MovementInput();
+            RotateHand();
+        }
+        
     }
 
     void RotateHand()

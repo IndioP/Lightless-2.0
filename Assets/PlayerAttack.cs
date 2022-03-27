@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -22,36 +24,42 @@ public class PlayerAttack : MonoBehaviour
 
     float BowCharge;
     bool CanFire = true;
+    PhotonView view;
 
     private void Start()
     {
         BowPowerSlider.value = 0f;
         BowPowerSlider.maxValue = MaxBowCharge;
         gameObject.tag = "Jogador";
+        view = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
-        if(Input.GetMouseButton(0) && CanFire)
+        if (view.IsMine)
         {
-            ChargeBow();
-        }
-        else if(Input.GetMouseButtonUp(0) && CanFire)
-        {
-            FireBow();
-        }else
-        {
-            //if(BowCharge > 0f)
-            //{
-            //    BowCharge = 0.1f * Time.deltaTime;
-            //}else
-            //{
+            if (Input.GetMouseButton(0) && CanFire)
+            {
+                ChargeBow();
+            }
+            else if (Input.GetMouseButtonUp(0) && CanFire)
+            {
+                FireBow();
+            }
+            else
+            {
+                //if(BowCharge > 0f)
+                //{
+                //    BowCharge = 0.1f * Time.deltaTime;
+                //}else
+                //{
                 BowCharge = 0f;
                 //CanFire = true;
 
-            //}
-            BowPowerSlider.value = BowCharge;
-        } 
+                //}
+                BowPowerSlider.value = BowCharge;
+            }
+        }
     }
 
     void ChargeBow()
@@ -74,7 +82,8 @@ public class PlayerAttack : MonoBehaviour
         float ArrowSpeed = BowCharge + BowPower;
         float angle = Utility.AngleTowardsMouse(Bow.position);
         Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
-        Arrow Arrow = Instantiate(ArrowPrefab, Bow.position, rot).GetComponent<Arrow>();
+        //Arrow Arrow = Instantiate(ArrowPrefab, Bow.position, rot).GetComponent<Arrow>();
+        Arrow Arrow = PhotonNetwork.Instantiate(ArrowPrefab.name, Bow.position, rot).GetComponent<Arrow>();
         Arrow.ArrowVelocity = ArrowSpeed;
         CanFire = false;
         ArrowGFX.enabled = false;
