@@ -18155,7 +18155,7 @@ GameObject:
   - component: {fileID: 1101827559}
   - component: {fileID: 1101827562}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18298,8 +18298,10 @@ GameObject:
   - component: {fileID: 1227314043}
   - component: {fileID: 1227314042}
   - component: {fileID: 1227314044}
+  - component: {fileID: 1227314046}
+  - component: {fileID: 1227314045}
   m_Layer: 9
-  m_Name: EventSystem
+  m_Name: Monstro
   m_TagString: Monstro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18367,7 +18369,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015715018, y: -0.08691375}
+  m_Offset: {x: 0.015715063, y: -0.036690414}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -18378,7 +18380,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23077062, y: 0.3204929}
+  m_Size: {x: 0.33791375, y: 0.7155832}
   m_EdgeRadius: 0
 --- !u!50 &1227314043
 Rigidbody2D:
@@ -18413,3 +18415,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc73043beefa3664fa91b8d73d22feba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1227314045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227314038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
+--- !u!114 &1227314046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227314038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1227314045}
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

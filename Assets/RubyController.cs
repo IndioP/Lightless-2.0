@@ -13,6 +13,10 @@ public class RubyController : MonoBehaviour
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;
         view = GetComponent<PhotonView>();
+        if (view.IsMine)
+        {
+            Camera.main.GetComponent<CameraScript>().player = transform;
+        }
     }
 
     // Update is called once per frame

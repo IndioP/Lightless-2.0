@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public Transform player;
+    [HideInInspector] public Transform player;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +14,9 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+        if(player != null)
+        {
+            transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+        }
     }
 }
