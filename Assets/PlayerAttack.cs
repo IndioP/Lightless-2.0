@@ -97,7 +97,11 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (other.gameObject.tag == "Monstro")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            if (view.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
     }
 }

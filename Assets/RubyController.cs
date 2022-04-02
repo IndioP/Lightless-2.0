@@ -7,12 +7,14 @@ public class RubyController : MonoBehaviour
 {
     [SerializeField] Transform hand;
     PhotonView view;
+    Rigidbody2D rb2D;
     // Start is called before the first frame update
     void Start()
     {
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;
         view = GetComponent<PhotonView>();
+        rb2D = GetComponent<Rigidbody2D>();
         if (view.IsMine)
         {
             Camera.main.GetComponent<CameraScript>().player = transform;
@@ -42,9 +44,8 @@ public class RubyController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         //Debug.Log(horizontal, vertical);
-        Vector2 position = transform.position;
-        position.x = position.x + 1f * horizontal * Time.deltaTime;
-        position.y = position.y + 1f * vertical * Time.deltaTime;
-        transform.position = position;
+        Vector2 velocity = new Vector2(horizontal, vertical);
+        velocity.Normalize();
+        rb2D.velocity = velocity;
     }
 }

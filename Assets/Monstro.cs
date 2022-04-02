@@ -7,12 +7,15 @@ public class Monstro : MonoBehaviour
 {
     int Health = 0;
     PhotonView view;
+    Rigidbody2D rb2D;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Health = 5;
         view = GetComponent<PhotonView>();
+        rb2D = GetComponent<Rigidbody2D>();
         if (view.IsMine)
         {
             Camera.main.GetComponent<CameraScript>().player = transform;
@@ -35,7 +38,8 @@ public class Monstro : MonoBehaviour
             Health -= 1;
             if(Health <= 0)
             {
-                Destroy(gameObject);
+                if (view.IsMine)
+                    Destroy(gameObject);
             }
         }
         
@@ -47,9 +51,8 @@ public class Monstro : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         //Debug.Log(horizontal, vertical);
-        Vector2 position = transform.position;
-        position.x = position.x + 1f * horizontal * Time.deltaTime;
-        position.y = position.y + 1f * vertical * Time.deltaTime;
-        transform.position = position;
+        Vector2 velocity = new Vector2(horizontal, vertical);
+        velocity.Normalize();
+        rb2D.velocity = velocity;
     }
 }
