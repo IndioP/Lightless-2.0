@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject ArrowPrefab;
 
     [SerializeField] SpriteRenderer ArrowGFX;
+    [SerializeField] SpriteRenderer PlayerGFX;
+    [SerializeField] SpriteRenderer EsqueletoGFX;
 
     [SerializeField] Slider BowPowerSlider;
 
@@ -36,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (view.IsMine)
+        if (view.IsMine && PlayerGFX.enabled)
         {
             if (Input.GetMouseButton(0) && CanFire)
             {
@@ -91,17 +93,41 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        //rb2D.velocity = new Vector2(0, 0);
         if (other.gameObject.tag == "Flecha")
         {
             CanFire = true;
         }
         else if (other.gameObject.tag == "Monstro")
         {
+            PlayerGFX.enabled = false;
+            EsqueletoGFX.enabled = true;
             //Destroy(gameObject);
-            if (view.IsMine)
+            //if (view.IsMine)
+            //{
+            //    PhotonNetwork.Destroy(gameObject);
+            //}
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Jogador");
+            foreach (var player in players)
             {
-                PhotonNetwork.Destroy(gameObject);
+                Physics2D.IgnoreCollision(player.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<CapsuleCollider2D>(), false);
             }
+            GameObject monstro = GameObject.FindGameObjectWithTag("Monstro");
+            Physics2D.IgnoreCollision(monstro.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<CapsuleCollider2D>(), true);
+        }
+        else if (other.gameObject.tag == "Jogador")
+        {
+            PlayerGFX.enabled = true;
+            EsqueletoGFX.enabled = false;
+
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Jogador");
+            foreach (var player in players)
+            {
+                Physics2D.IgnoreCollision(player.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<CapsuleCollider2D>(), true);
+            }
+            GameObject monstro = GameObject.FindGameObjectWithTag("Monstro");
+            Physics2D.IgnoreCollision(monstro.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<CapsuleCollider2D>(), false);
+
         }
     }
 }

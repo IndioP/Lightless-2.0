@@ -6,7 +6,11 @@ using Photon.Pun;
 public class RubyController : MonoBehaviour
 {
     [SerializeField] Transform hand;
+
+    [SerializeField] SpriteRenderer PlayerGFX;
+
     PhotonView view;
+    
     Rigidbody2D rb2D;
     // Start is called before the first frame update
     void Start()
@@ -24,10 +28,14 @@ public class RubyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (view.IsMine)
+        if (view.IsMine && PlayerGFX.enabled)
         {
             MovementInput();
             RotateHand();
+        }
+        else
+        {
+            rb2D.velocity = new Vector2(0,0);
         }
         
     }

@@ -33,15 +33,20 @@ public class Monstro : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        
+        rb2D.velocity = new Vector2(0, 0);
         if (other.gameObject.tag == "Flecha")
         {
+
             Health -= 1;
-            if(Health <= 0)
+            if (Health <= 0)
             {
-                if (view.IsMine)
-                    Destroy(gameObject);
+                    
+                PhotonNetwork.Destroy(gameObject);
             }
         }
+        
+        
         
     }
 

@@ -32,15 +32,15 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        
         Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag == "Jogador")
         {
             //Destroy(gameObject);
-            if (view.IsMine)
-            {
-                PhotonNetwork.Destroy(gameObject);
 
-            }
+            PhotonNetwork.Destroy(gameObject);
+
+
         }
         else
         {
@@ -53,6 +53,8 @@ public class Arrow : MonoBehaviour
             GameObject monstro = GameObject.FindGameObjectWithTag("Monstro");
             Physics2D.IgnoreCollision(monstro.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<CapsuleCollider2D>(), true);
         }
+        
+        
         
     }
 }
