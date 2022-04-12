@@ -27,13 +27,13 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     private void JoinLevel()
     {
         playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
-        // if(hasStart){
-        //     PhotonNetwork.LoadLevel("MainScene");
-        // }
-        if(playerCount >= startPlayerNumber){
+        if(hasStart){
+           PhotonNetwork.LoadLevel("MainScene");
+        }
+        if(playerCount >= (startPlayerNumber)){
             hasStart = true;
             PhotonNetwork.LoadLevel("MainScene");
-        } else {
+        }else{
             PhotonNetwork.LoadLevel("WaiteRoom");
         }
     }
@@ -42,6 +42,10 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         Debug.Log("teste");
         this.JoinLevel();
+    }
+
+    public override void OnConnectedToMaster(){
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
