@@ -9,11 +9,11 @@ public class Monstro : MonoBehaviour
     PhotonView view;
     Rigidbody2D rb2D;
 
-
     // Start is called before the first frame update
     void Start()
     {
         Health = 5;
+        
         view = GetComponent<PhotonView>();
         rb2D = GetComponent<Rigidbody2D>();
         if (view.IsMine)
@@ -54,6 +54,9 @@ public class Monstro : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+
+        Debug.Log("Horizontal: " + horizontal);
+        Debug.Log("Vertical: " + vertical);
 
         //Debug.Log(horizontal, vertical);
         Vector2 velocity = new Vector2(horizontal, vertical);

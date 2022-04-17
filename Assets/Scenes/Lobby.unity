@@ -614,6 +614,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createInput: {fileID: 326706183}
   joinInput: {fileID: 43079282}
+  playerPrefab:
+  - {fileID: 5703860817679512962, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+  - {fileID: 5379203271820734452, guid: 05969804bbf4c6a9b9a0089cb3f37871, type: 3}
+  - {fileID: 6950713347716370486, guid: 2b0bfdab83510f2c8bd1c08115809a1e, type: 3}
+  - {fileID: 8618321319466648013, guid: 9cfa9ddcb33cf7f8e85e568311aa7aea, type: 3}
+  - {fileID: 8894144841762571161, guid: ec3762f999876f373add2378e2a23a03, type: 3}
 --- !u!4 &298832798
 Transform:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
-    private byte startPlayerNumber = 3;
+    private byte startPlayerNumber = 5;
     private byte playerCount = 0;
     private bool hasStart = false;
 
@@ -40,7 +40,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("teste");
+        //Debug.Log("teste");
         this.JoinLevel();
     }
 
@@ -50,7 +50,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log("teste");
+        //Debug.Log("teste");
         this.JoinLevel();
     }
 

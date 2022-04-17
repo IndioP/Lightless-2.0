@@ -118,12 +118,12 @@ TextureImporter:
       name: ifrit2Baixo_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 2
-        width: 46
-        height: 59
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,12 +139,12 @@ TextureImporter:
       name: ifrit2Baixo_1
       rect:
         serializedVersion: 2
-        x: 75
-        y: 2
-        width: 42
-        height: 58
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,12 +160,12 @@ TextureImporter:
       name: ifrit2Baixo_2
       rect:
         serializedVersion: 2
-        x: 137
-        y: 2
-        width: 46
-        height: 59
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: ifrit2Baixo_3
       rect:
         serializedVersion: 2
-        x: 203
-        y: 2
-        width: 42
-        height: 58
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
