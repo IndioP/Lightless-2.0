@@ -35,4 +35,30 @@ public class SpawnPlayers : MonoBehaviour{
         }
         
     }
+    private void Update()
+    {
+        Boolean gameHasEnded = true;
+        int numPlayer = 0;
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Jogador");
+        foreach (var player in players)
+        {
+            numPlayer += 1;
+            SpriteRenderer[] sprites = player.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var sprite in sprites)
+            {
+                if(sprite.tag == "SpriteCaveira")
+                {
+                    if (!sprite.enabled)
+                    {
+                        gameHasEnded = false;
+                    }
+                }
+            }
+        }
+        if (gameHasEnded && numPlayer > 0)
+        {
+            PhotonNetwork.LoadLevel("GameOver");
+        }
+    }
+
 }

@@ -90,6 +90,26 @@ public class PlayerAttack : MonoBehaviour
         CanFire = false;
         ArrowGFX.enabled = false;
     }
+    [PunRPC]
+    void VivoMorto(int Id)
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Jogador");
+        foreach (var player in players)
+        {
+            PhotonView playerView = player.GetComponent<PhotonView>();
+            if(playerView.ViewID == Id)
+            {
+                SpriteRenderer[] sprites = player.GetComponentsInChildren<SpriteRenderer>();
+                foreach(var sprite in sprites)
+                {
+                    sprite.enabled = !sprite.enabled;
+                }
+                //player.PlayerGFX.enabled = !player.PlayerGFX.enabled;
+                //player.EsqueletoGFX.enabled = !player.EsqueletoGFX.enabled;
+            }
+            
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -98,15 +118,16 @@ public class PlayerAttack : MonoBehaviour
         {
             CanFire = true;
         }
-        else if (other.gameObject.tag == "Monstro")
+        else if (other.gameObject.tag == "Monstro" && PlayerGFX.enabled)
         {
-            PlayerGFX.enabled = false;
-            EsqueletoGFX.enabled = true;
+            //PlayerGFX.enabled = false;
+            //EsqueletoGFX.enabled = true;
             //Destroy(gameObject);
             //if (view.IsMine)
             //{
             //    PhotonNetwork.Destroy(gameObject);
             //}
+            view.RPC(nameof(VivoMorto), RpcTarget.All, view.ViewID);
             GameObject[] players = GameObject.FindGameObjectsWithTag("Jogador");
             foreach (var player in players)
             {
@@ -115,10 +136,11 @@ public class PlayerAttack : MonoBehaviour
             GameObject monstro = GameObject.FindGameObjectWithTag("Monstro");
             Physics2D.IgnoreCollision(monstro.GetComponent<CapsuleCollider2D>(), gameObject.GetComponent<CapsuleCollider2D>(), true);
         }
-        else if (other.gameObject.tag == "Jogador")
+        else if (other.gameObject.tag == "Jogador" && EsqueletoGFX.enabled)
         {
-            PlayerGFX.enabled = true;
-            EsqueletoGFX.enabled = false;
+            //PlayerGFX.enabled = true;
+            //EsqueletoGFX.enabled = false;
+            view.RPC(nameof(VivoMorto), RpcTarget.All, view.ViewID);
 
             GameObject[] players = GameObject.FindGameObjectsWithTag("Jogador");
             foreach (var player in players)
