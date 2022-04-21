@@ -9,10 +9,19 @@ public class RubyController : MonoBehaviour
 
     [SerializeField] SpriteRenderer PlayerGFX;
 
+    [SerializeField] private AudioSource PassoSFX;
+
     PhotonView view;
     
     Rigidbody2D rb2D;
     // Start is called before the first frame update
+
+    [PunRPC]
+    void playPasso()
+    {
+        PassoSFX.Play();
+    }
+
     void Start()
     {
         //QualitySettings.vSyncCount = 0;
@@ -54,6 +63,10 @@ public class RubyController : MonoBehaviour
         //Debug.Log(horizontal, vertical);
         Vector2 velocity = new Vector2(horizontal, vertical);
         velocity.Normalize();
+        if(velocity != new Vector2(0, 0))
+        {
+            view.RPC(nameof(playPasso), RpcTarget.All);
+        }
         rb2D.velocity = velocity;
     }
 }

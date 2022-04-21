@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] SpriteRenderer ArrowGFX;
     [SerializeField] SpriteRenderer PlayerGFX;
     [SerializeField] SpriteRenderer EsqueletoGFX;
+    [SerializeField] private AudioSource RessucitarSFX;
+
 
     [SerializeField] Slider BowPowerSlider;
 
@@ -91,6 +93,12 @@ public class PlayerAttack : MonoBehaviour
         ArrowGFX.enabled = false;
     }
     [PunRPC]
+    void playRessucitar()
+    {
+        RessucitarSFX.Play();
+    }
+
+    [PunRPC]
     void VivoMorto(int Id)
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Jogador");
@@ -141,6 +149,7 @@ public class PlayerAttack : MonoBehaviour
             //PlayerGFX.enabled = true;
             //EsqueletoGFX.enabled = false;
             view.RPC(nameof(VivoMorto), RpcTarget.All, view.ViewID);
+            view.RPC(nameof(playRessucitar), RpcTarget.All);
 
             GameObject[] players = GameObject.FindGameObjectsWithTag("Jogador");
             foreach (var player in players)

@@ -8,6 +8,15 @@ public class Monstro : MonoBehaviour
     int Health = 0;
     PhotonView view;
     Rigidbody2D rb2D;
+    [SerializeField] private AudioSource PassoSFX;
+    [SerializeField] private AudioSource MorteSFX;
+
+
+    [PunRPC]
+    void playPasso()
+    {
+        PassoSFX.Play();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +52,7 @@ public class Monstro : MonoBehaviour
             {
                     
                 PhotonNetwork.Destroy(gameObject);
+                
             }
         }
         
@@ -61,6 +71,10 @@ public class Monstro : MonoBehaviour
         //Debug.Log(horizontal, vertical);
         Vector2 velocity = new Vector2(horizontal, vertical);
         velocity.Normalize();
+        if (velocity != new Vector2(0, 0))
+        {
+            view.RPC(nameof(playPasso), RpcTarget.All);
+        }
         rb2D.velocity = velocity;
     }
 }
