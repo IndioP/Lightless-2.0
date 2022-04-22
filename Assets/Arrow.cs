@@ -37,9 +37,12 @@ public class Arrow : MonoBehaviour
         if (other.gameObject.tag == "Jogador")
         {
             //Destroy(gameObject);
+            
 
-            PhotonNetwork.Destroy(gameObject);
-
+            if (!other.gameObject.GetComponent<PlayerAttack>().CanFire)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
 
         }
         else

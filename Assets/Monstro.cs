@@ -10,6 +10,7 @@ public class Monstro : MonoBehaviour
     Rigidbody2D rb2D;
     [SerializeField] private AudioSource PassoSFX;
     [SerializeField] private AudioSource MorteSFX;
+    [SerializeField] Animator animator;
 
 
     [PunRPC]
@@ -71,9 +72,16 @@ public class Monstro : MonoBehaviour
         //Debug.Log(horizontal, vertical);
         Vector2 velocity = new Vector2(horizontal, vertical);
         velocity.Normalize();
-        if (velocity != new Vector2(0, 0))
+        if (velocity != Vector2.zero)
         {
+            animator.SetBool("isMoving", true);
+            animator.SetFloat("horizontal", velocity.x);
+            animator.SetFloat("vertical", velocity.y);
             view.RPC(nameof(playPasso), RpcTarget.All);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
         rb2D.velocity = velocity;
     }

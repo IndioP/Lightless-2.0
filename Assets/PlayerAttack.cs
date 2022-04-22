@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] float MaxBowCharge;
 
     float BowCharge;
-    bool CanFire = true;
+    public bool CanFire = true;
     PhotonView view;
 
     private void Start()

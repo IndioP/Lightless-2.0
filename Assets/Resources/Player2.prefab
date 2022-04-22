@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5666731234449038852, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f4d3f60f1deae3540828ce696023bf56, type: 2}
     - target: {fileID: 5703860817024773272, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
       propertyPath: m_Sprite
       value: 

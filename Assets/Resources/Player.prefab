@@ -727,6 +727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5703860817024773273}
   - component: {fileID: 5703860817024773272}
+  - component: {fileID: 5666731234449038852}
   m_Layer: 0
   m_Name: golbezBaixo_0
   m_TagString: Sprite
@@ -799,6 +800,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5666731234449038852
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5703860817024773274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe509feaefccda848ba6990dcad86e9a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5703860817679512962
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +877,7 @@ MonoBehaviour:
   hand: {fileID: 5703860816040797052}
   PlayerGFX: {fileID: 5703860817024773272}
   PassoSFX: {fileID: 982738761776255561}
+  animator: {fileID: 5666731234449038852}
 --- !u!50 &5703860817679512966
 Rigidbody2D:
   serializedVersion: 4
