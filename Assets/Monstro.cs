@@ -11,7 +11,8 @@ public class Monstro : MonoBehaviour
     [SerializeField] private AudioSource PassoSFX;
     [SerializeField] private AudioSource MorteSFX;
     [SerializeField] Animator animator;
-
+    [SerializeField] GameObject ArrowPrefab;
+    public Texture Sangue, Contorno;
 
     [PunRPC]
     void playPasso()
@@ -41,24 +42,32 @@ public class Monstro : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
+    [PunRPC]
+    public void OnGUI(){
+        GUI.DrawTexture (new Rect (Screen.width / 40, Screen.height / 40, Screen.width / 5.5f/5*Health, Screen.height / 25), Sangue);
+        GUI.DrawTexture (new Rect (Screen.width/40, Screen.height/40, Screen.width/5, Screen.height/8), Contorno);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other){
         
         rb2D.velocity = new Vector2(0, 0);
-        if (other.gameObject.tag == "Flecha")
-        {
+        if (other.gameObject.tag == "Flecha"){
 
             Health -= 1;
-            if (Health <= 0)
-            {
+            if (Health <= 0){
                     
-                PhotonNetwork.Destroy(gameObject);
-                
+                //PhotonNetwork.Destroy(gameObject);
+                PhotonNetwork.LoadLevel("PlayersWin");
             }
-        }
-        
-        
-        
+
+            Debug.Log("Destruindo flexa");
+            PhotonNetwork.Destroy(other.gameObject);
+            Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+            Vector2 pos = new Vector2(0,0);
+            Arrow Arrow = PhotonNetwork.Instantiate(ArrowPrefab.name, pos, rot).GetComponent<Arrow>();
+            Arrow.ArrowVelocity = 0f;
+            Debug.Log("ARROW PREGAB --");
+        }        
     }
 
     void MovementInput()

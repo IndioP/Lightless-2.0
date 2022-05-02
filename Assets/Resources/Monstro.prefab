@@ -285,6 +285,9 @@ MonoBehaviour:
   PassoSFX: {fileID: 610731959885024514}
   MorteSFX: {fileID: 5691856914830956694}
   animator: {fileID: 7417950582429754950}
+  ArrowPrefab: {fileID: 5373264721302605604, guid: 37636c569eedd8442b878329fb346748, type: 3}
+  Sangue: {fileID: 2800000, guid: d6046844019a94ef482e24c02b6cb862, type: 3}
+  Contorno: {fileID: 2800000, guid: 45b745d797c569800bd209378b606da9, type: 3}
 --- !u!114 &8894144841762571153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,12 +367,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8894144841762571161}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2f8e652fdf3d9fd4e98cb67217eb306c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.575
   m_Pitch: 1
   Loop: 0
   Mute: 0

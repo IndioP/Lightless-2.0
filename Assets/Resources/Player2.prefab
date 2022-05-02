@@ -19,6 +19,26 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3966050458046790356, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997394920707813956, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+      propertyPath: m_Volume
+      value: 0.662
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935676692947112286, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935676692947112286, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f4d3f60f1deae3540828ce696023bf56, type: 2}
+    - target: {fileID: 5666731234449038852, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5666731234449038852, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
       propertyPath: m_Controller
       value: 
@@ -79,5 +99,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 5703860817679512967, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 5416332653068682354}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+--- !u!95 &5416332653068682354 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5666731234449038852, guid: afe463a7c1f43a24eace8e1e61ee02d1, type: 3}
+  m_PrefabInstance: {fileID: 400516701397981814}
+  m_PrefabAsset: {fileID: 0}

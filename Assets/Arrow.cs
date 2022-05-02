@@ -13,6 +13,7 @@ public class Arrow : MonoBehaviour
     private void Start()
     {
         //Destroy(gameObject, 4f);
+        Debug.Log("INSTANTIATE ARROW");
         view = GetComponent<PhotonView>();
         gameObject.tag = "Flecha";
         ArrowVelocity = 2f;
