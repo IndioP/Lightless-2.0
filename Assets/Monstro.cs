@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class Monstro : MonoBehaviour
 {
-    int Health = 0;
+    public int Health = 0;
     PhotonView view;
     Rigidbody2D rb2D;
     [SerializeField] private AudioSource PassoSFX;

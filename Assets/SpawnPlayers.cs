@@ -9,7 +9,7 @@ using System;
 public class SpawnPlayers : MonoBehaviour{
     public List<GameObject> playerPrefab;
     int numberPlayers = 0; 
-    int idMonster = 2;
+    int idMonster = 5;
 
 
     private void Start(){
@@ -31,7 +31,7 @@ public class SpawnPlayers : MonoBehaviour{
             Debug.Log("Player");
             int numberPrefab = UnityEngine.Random.Range(1, numberPlayers);
             Vector2 pos = new Vector2(UnityEngine.Random.Range(-2,2),UnityEngine.Random.Range(-2,2));
-            PhotonNetwork.Instantiate(playerPrefab[3].name, pos, Quaternion.identity,0);
+            PhotonNetwork.Instantiate(playerPrefab[numberPrefab].name, pos, Quaternion.identity,0);
         }
         
     }
