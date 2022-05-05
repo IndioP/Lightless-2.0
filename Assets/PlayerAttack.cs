@@ -13,6 +13,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] SpriteRenderer PlayerGFX;
     [SerializeField] SpriteRenderer EsqueletoGFX;
     [SerializeField] private AudioSource RessucitarSFX;
+    [SerializeField] private AudioSource ArrowAttack;
+    [SerializeField] private AudioSource ArrowGet;
 
 
     [SerializeField] Slider BowPowerSlider;
@@ -91,6 +93,8 @@ public class PlayerAttack : MonoBehaviour
         Arrow.ArrowVelocity = ArrowSpeed;
         CanFire = false;
         ArrowGFX.enabled = false;
+        Debug.Log("Atirei a flexa");
+        ArrowAttack.Play();
     }
     [PunRPC]
     void playRessucitar()
@@ -124,6 +128,8 @@ public class PlayerAttack : MonoBehaviour
         //rb2D.velocity = new Vector2(0, 0);
         if (other.gameObject.tag == "Flecha")
         {
+            Debug.Log("Play Debug");
+            ArrowGet.Play();
             CanFire = true;
         }
         else if (other.gameObject.tag == "Monstro" && PlayerGFX.enabled)
