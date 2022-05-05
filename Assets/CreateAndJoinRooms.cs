@@ -10,7 +10,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
-    private byte startPlayerNumber = 4;
+    private byte startPlayerNumber = 3;
     private byte playerCount = 0;
     private bool hasStart = false;
 
