@@ -52,20 +52,25 @@ public class Monstro : MonoBehaviour
         
         rb2D.velocity = new Vector2(0, 0);
         if (other.gameObject.tag == "Flecha"){
-
+            
             Health -= 1;
             if (Health <= 0){
                     
                 //PhotonNetwork.Destroy(gameObject);
                 PhotonNetwork.LoadLevel("PlayersWin");
             }
-
-            Debug.Log("Destruindo flexa");
-            PhotonNetwork.Destroy(other.gameObject);
-            Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-            Vector2 pos = new Vector2(0,0);
-            Arrow Arrow = PhotonNetwork.Instantiate(ArrowPrefab.name, pos, rot).GetComponent<Arrow>();
-            Arrow.ArrowVelocity = 0f;
+            
+            if (view.IsMine)
+            {
+                
+                //Debug.Log("Destruindo flexa");
+                //PhotonNetwork.Destroy(other.gameObject);
+                Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+                Vector2 pos = new Vector2(0,0);
+                Arrow Arrow = PhotonNetwork.Instantiate(ArrowPrefab.name, pos, rot).GetComponent<Arrow>();
+                //view.RPC(nameof(Arrow.destroySelf), RpcTarget.All);
+                //Arrow.ArrowVelocity = 0f;
+            }
             Debug.Log("ARROW PREGAB --");
         }        
     }

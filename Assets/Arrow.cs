@@ -31,6 +31,12 @@ public class Arrow : MonoBehaviour
         rb.velocity = transform.up * ArrowVelocity;
     }
 
+    [PunRPC]
+    public void destroySelf()
+    {
+        Destroy(gameObject,0.2f);
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         
@@ -42,9 +48,15 @@ public class Arrow : MonoBehaviour
 
             if (!other.gameObject.GetComponent<PlayerAttack>().CanFire)
             {
-                PhotonNetwork.Destroy(gameObject);
+                view.RPC(nameof(destroySelf), RpcTarget.All);
             }
 
+        }else if (other.gameObject.tag == "Monstro")
+        {
+            
+            ArrowVelocity = 0f;
+            
+            view.RPC(nameof(destroySelf), RpcTarget.All);
         }
         else
         {
