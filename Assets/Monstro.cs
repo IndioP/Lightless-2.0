@@ -19,7 +19,11 @@ public class Monstro : MonoBehaviour
     {
         PassoSFX.Play();
     }
-
+    [PunRPC]
+    public void takeDamage()
+    {
+        Health -= 1;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -52,13 +56,18 @@ public class Monstro : MonoBehaviour
         
         rb2D.velocity = new Vector2(0, 0);
         if (other.gameObject.tag == "Flecha"){
-            
-            Health -= 1;
-            if (Health <= 0){
-                    
-                //PhotonNetwork.Destroy(gameObject);
-                PhotonNetwork.LoadLevel("PlayersWin");
+
+            if (view.IsMine)
+            {
+                view.RPC(nameof(takeDamage), RpcTarget.All);
+                if (Health <= 0)
+                {
+                    //PhotonNetwork.Destroy(gameObject);
+                    //PhotonNetwork.AutomaticallySyncScene = false;
+                    PhotonNetwork.LoadLevel("PlayersWin");
+                }
             }
+            
             
             if (view.IsMine)
             {
