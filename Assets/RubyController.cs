@@ -77,6 +77,6 @@ public class RubyController : MonoBehaviour
         {
             animator.SetBool("isMoving", false);
         }
-        rb2D.velocity = velocity;
+        rb2D.velocity = velocity * 2;
     }
 }

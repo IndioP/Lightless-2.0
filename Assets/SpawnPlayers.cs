@@ -24,7 +24,7 @@ public class SpawnPlayers : MonoBehaviour{
         Debug.Log("ID MONSTER: " + idMonster);
         if(PhotonNetwork.LocalPlayer.ActorNumber == idMonster){
             Debug.Log("MonsterID: " + PhotonNetwork.LocalPlayer.ActorNumber);
-            Vector2 pos = new Vector2(1,1);
+            Vector2 pos = new Vector2(1,2);
             PhotonNetwork.Instantiate(playerPrefab[0].name, pos, Quaternion.identity,0);
         }
         else{

@@ -24,6 +24,10 @@ public class Monstro : MonoBehaviour
     {
         Health -= 1;
     }
+    [PunRPC]
+    public void loadWin(){
+        PhotonNetwork.LoadLevel("PlayersWin");
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +68,8 @@ public class Monstro : MonoBehaviour
                 {
                     //PhotonNetwork.Destroy(gameObject);
                     //PhotonNetwork.AutomaticallySyncScene = false;
-                    PhotonNetwork.LoadLevel("PlayersWin");
+                    //PhotonNetwork.LoadLevel("PlayersWin");
+                    view.RPC(nameof(loadWin), RpcTarget.All);
                 }
             }
             
@@ -106,6 +111,13 @@ public class Monstro : MonoBehaviour
         {
             animator.SetBool("isMoving", false);
         }
-        rb2D.velocity = velocity;
+
+        if(Health <= 3){
+            rb2D.velocity = velocity * 3;
+        }
+        else{
+            rb2D.velocity = velocity * 2;
+        }
+
     }
 }

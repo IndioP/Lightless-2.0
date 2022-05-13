@@ -14,12 +14,14 @@ public class PlayersCount : MonoBehaviourPunCallbacks
     void Start ()
     {
         counterPlayersText = GetComponent<Text>();
-        counterPlayersText.text = "Now:" + playerCount.ToString() + " players";
+        counterPlayersText.text = playerCount.ToString();
     }
 
-    void Update ()
+    
+    void Update()
     {
         playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
-        counterPlayersText.text = "Now:" + playerCount.ToString() + " players";
+        counterPlayersText.text = playerCount.ToString();
     }
+
 }
