@@ -9,7 +9,7 @@ using System;
 public class SpawnPlayers : MonoBehaviour{
     public List<GameObject> playerPrefab;
     int numberPlayers = 0; 
-    int idMonster = 3;
+    int idMonster = 5;
 
 
     private void Start(){
